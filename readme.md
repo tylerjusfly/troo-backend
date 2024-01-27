@@ -25,6 +25,10 @@ body: {
   "password": "ladygaga"
 }
 
+```
+
+```
+
 Add users as a Super admin
 
 localhost:4000/api/users/add -POST
