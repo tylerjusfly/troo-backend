@@ -5,8 +5,6 @@ export type TUserType = {
 	company: string;
 	email: string;
 	telephone: string;
-	active: boolean;
-	token: string | null;
 	password: string;
 	salt: string;
 };

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Iuser_type, TCreate, TLogin } from '../../interfaces/auth';
+import { TCreate, TLogin } from '../../interfaces/auth';
 import { validationResult } from 'express-validator';
 import { handleBadRequest, handleError, handleSuccess } from '../../constants/response-handler';
 import { dataSource } from '../../database/dataSource';
@@ -8,8 +8,6 @@ import { isValidPassword } from '../../utils/password-helper';
 import { pbkdf2Sync, randomBytes } from 'crypto';
 import { getToken } from '../../utils/token-helper';
 import { convertToSlug } from '../../utils/convertToSlug';
-
-const validUserTypes: Iuser_type[] = ['super_admin', 'basic_user', 'basic_admin'];
 
 export const loginUser = async (req: Request, res: Response) => {
 	try {
@@ -85,8 +83,6 @@ export const create = async (req: Request, res: Response) => {
 
 		const salt = randomBytes(30).toString('hex');
 		const hashedPass = pbkdf2Sync(password, salt, 1000, 64, `sha512`).toString(`hex`);
-
-		// const user_type: Iuser_type = validUserTypes.includes(is_admin) ? is_admin : 'basic_user';
 
 		const createdUser = dataSource.getRepository(User).create({
 			password: hashedPass,

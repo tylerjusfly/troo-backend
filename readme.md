@@ -25,6 +25,16 @@ body: {
   "password": "ladygaga"
 }
 
+Add users as a Super admin
+
+localhost:4000/api/users/add -POST
+{
+  "fullname": "olamide",
+  "email": "tyoer@sm.com",
+  "type": "basic_user"
+}
+Token header is Required for this route, get a token from login route
+
 ```
 
 ### Roles and Permission api
