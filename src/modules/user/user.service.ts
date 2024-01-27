@@ -10,6 +10,7 @@ import { convertToSlug } from '../../utils/convertToSlug';
 import { pbkdf2Sync, randomBytes } from 'crypto';
 import { Iuser_type } from '../../interfaces/auth';
 import { CustomRequest } from '../../middlewares/verifyauth';
+import { Role } from '../../database/entites/role.entity';
 
 const validUserTypes: Iuser_type[] = ['basic_user', 'basic_admin'];
 
@@ -154,6 +155,41 @@ export const addUser = async (req: CustomRequest, res: Response) => {
 		const results = await dataSource.getRepository(User).save(createUser);
 
 		return handleSuccess(res, results, 201, undefined);
+	} catch (error) {
+		return handleError(res, error);
+	}
+};
+
+export const AssignRoleToUsers = async (req: Request, res: Response) => {
+	try {
+		const { userid, roleid }: { userid: number; roleid: number } = req.body;
+
+		// Find user
+		const isUser = await User.findOne({
+			where: {
+				id: userid,
+			},
+		});
+
+		if (!isUser) {
+			return handleBadRequest(res, 400, `user does not exist`);
+		}
+
+		// find role
+		const role = await Role.findOne({
+			where: { id: roleid },
+		});
+
+		if (!role) {
+			return handleBadRequest(res, 400, 'role not found');
+		}
+
+		// assign role to user
+		isUser.role_id = role;
+
+		await isUser.save();
+
+		return handleSuccess(res, 'role added', 200);
 	} catch (error) {
 		return handleError(res, error);
 	}

@@ -37,7 +37,18 @@ localhost:4000/api/users/add -POST
   "email": "tyoer@sm.com",
   "type": "basic_user"
 }
-Token header is Required for this route, get a token from login route
+Bearer token is Required for this route, get a token from login route
+
+```
+
+```
+localhost:4000/api/users/assign-roles
+{
+  "userid": 1,
+  "roleid": 1
+}
+
+Bearer token is Required
 
 ```
 
