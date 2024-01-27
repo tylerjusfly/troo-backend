@@ -51,13 +51,17 @@ localhost:4000/api/role/add-permission POST
   "roleid": 1,
   "permissions": [1,2]
 }
+```
 
+```
 To create Permissions
 localhost:4000/api/permission - POST
 
 {
   "name": "delete-user"
 }
+```
+```
 
 Fetch Role By ID
 localhost:4000/api/role - GET
@@ -65,7 +69,9 @@ localhost:4000/api/role - GET
 {
   "id": 1
 }
+```
 
+```
 Create Role
 localhost:4000/api/role/create - POST
 
