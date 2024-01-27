@@ -1,11 +1,4 @@
 ### Troo Backend
-```
-
-token for admin 
-
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3R5cGUiOiJzdXBlcl9hZG1pbiIsImlkIjoxLCJjb21wYW55IjoiUHJvY2Vzc29yIiwiaWF0IjoxNzA2Mzk3NDM5LCJleHAiOjE3MDg5ODk0Mzl9.c1Md1xDKtbhvfOq2Lr0j2CaAHN7EhGWrusRHztV6KAU
-
-```
 
 ```
 
