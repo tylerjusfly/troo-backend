@@ -21,7 +21,7 @@ export const getPayload = (user: TUserType): ITokenPayload => {
 export const getToken = async (user: TUserType) => {
 	const payload: ITokenPayload = getPayload(user);
 	const token = jwt.sign(payload, secret, {
-		expiresIn: 300000,
+		expiresIn: '30d',
 	});
 	return {
 		token,

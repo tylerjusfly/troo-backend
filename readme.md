@@ -1,4 +1,11 @@
 ### Troo Backend
+```
+
+token for admin 
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX3R5cGUiOiJzdXBlcl9hZG1pbiIsImlkIjoxLCJjb21wYW55IjoiUHJvY2Vzc29yIiwiaWF0IjoxNzA2Mzk3NDM5LCJleHAiOjE3MDg5ODk0Mzl9.c1Md1xDKtbhvfOq2Lr0j2CaAHN7EhGWrusRHztV6KAU
+
+```
 
 ```
 
@@ -95,11 +102,7 @@ localhost:4000/api/role/create - POST
 
 ## Database relationship
 
-![image](https://github.com/tylerjusfly/troo-backend/assets/53145644/35f7f0ec-13b5-4f79-9cd8-65c92f37d3d8)
-
-
-
-### Many to Many through a junction table
+## Many to Many through a junction table
 
 ![image](https://github.com/tylerjusfly/troo-backend/assets/53145644/a6c9e1e7-9bae-4c28-b9f6-5869864326dc)
 
