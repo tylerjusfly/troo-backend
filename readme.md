@@ -4,7 +4,7 @@
 
 To create super admin
 
-localhost:4000/api/auth/create
+localhost:4000/api/auth/create - POST
 
 body: {
   "fullname": "Ademide",
@@ -18,12 +18,47 @@ body: {
 ```
 Login for all users
 
-localhost:4000/api/auth/login
+localhost:4000/api/auth/login - POST
 
 body: {
   "email": "tyler1@mil.com",
   "password": "ladygaga"
 }
+
+```
+
+### Roles and Permission api
+
+```
+To add Permissions to role
+localhost:4000/api/role/add-permission POST
+
+{
+  "roleid": 1,
+  "permissions": [1,2]
+}
+
+To create Permissions
+localhost:4000/api/permission - POST
+
+{
+  "name": "delete-user"
+}
+
+Fetch Role By ID
+localhost:4000/api/role - GET
+
+{
+  "id": 1
+}
+
+Create Role
+localhost:4000/api/role/create - POST
+
+{
+  "name": "admin"
+}
+
 
 ```
 
