@@ -26,3 +26,7 @@ body: {
 }
 
 ```
+
+## Database relationship
+
+![image](https://github.com/tylerjusfly/troo-backend/assets/53145644/35f7f0ec-13b5-4f79-9cd8-65c92f37d3d8)
