@@ -10,7 +10,7 @@ export const dataSource = new DataSource({
 	host: process.env.DATABASE_HOST || 'localhost',
 	port: parseInt(process.env.DATABASE_PORT || '5432'),
 	username: process.env.DATABASE_USER || 'postgres',
-	password: process.env.DATABASE_PASSWORD || 'tylerjusfly1996',
+	password: process.env.DATABASE_PASSWORD || 'tylerjusfly',
 	database: process.env.DATABASE_NAME || 'troo',
 	entities: ['**/*.entity.ts'],
 	logging: DATABASE_ENABLE_LOGGING,

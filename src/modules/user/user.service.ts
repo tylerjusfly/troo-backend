@@ -125,16 +125,12 @@ export const addUser = async (req: CustomRequest, res: Response) => {
 		const isEmail = await User.findOne({
 			where: {
 				email: email,
-				company: AdminWithAddPrivilege.company,
+				// company: AdminWithAddPrivilege.company,
 			},
 		});
 
 		if (isEmail) {
-			return handleBadRequest(
-				res,
-				400,
-				`user already exists in company ${AdminWithAddPrivilege.company}`
-			);
+			return handleBadRequest(res, 400, `user already exists`);
 		}
 
 		// Password change should be cumpulsory for all users when they are logged in,
