@@ -58,6 +58,7 @@ export const getMyProfile = async (req: CustomRequest, res: Response) => {
 			where: {
 				id: userReq.id,
 			},
+			relations: ['role_id', 'role_id.permissions'],
 		});
 
 		if (!userProfile) {
@@ -137,8 +138,8 @@ export const addUser = async (req: CustomRequest, res: Response) => {
 		}
 
 		// Password change should be cumpulsory for all users when they are logged in,
-		const salt = randomBytes(30).toString('hex');
-		const hashedPass = pbkdf2Sync('password', salt, 1000, 64, `sha512`).toString(`hex`);
+		const csalt = randomBytes(30).toString('hex');
+		const hashedPass = pbkdf2Sync('password', csalt, 1000, 64, `sha512`).toString(`hex`);
 
 		const user_type: Iuser_type = validUserTypes.includes(type) ? type : 'basic_user';
 
@@ -147,14 +148,20 @@ export const addUser = async (req: CustomRequest, res: Response) => {
 			email,
 			company: AdminWithAddPrivilege.company,
 			company_slug: convertToSlug(AdminWithAddPrivilege.company),
-			salt: salt,
+			salt: csalt,
 			password: hashedPass,
 			user_type,
 		});
 
 		const results = await dataSource.getRepository(User).save(createUser);
+		/**
+		 * THIS TAKES CARE OF THE PART WHERE I HAVE TO SEND A MAIL TO THE USER TO VIEW HIS/HER CREDENTIALS
+		 * INSTEAD I JUST SEND THOSE DATA AS RESPONSE
+		 *  */
 
-		return handleSuccess(res, results, 201, undefined);
+		const { password, company_slug, salt, ...others } = results;
+
+		return handleSuccess(res, { ...others, password: 'password' }, 201, undefined);
 	} catch (error) {
 		return handleError(res, error);
 	}

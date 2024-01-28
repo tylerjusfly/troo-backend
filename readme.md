@@ -1,10 +1,12 @@
 ### Troo Backend
 
-## Database relationship
-
-# Many to Many through a junction table
+## Database ERD
 
 ![image](https://github.com/tylerjusfly/troo-backend/assets/53145644/a6c9e1e7-9bae-4c28-b9f6-5869864326dc)
+
+This Image above depict a one to many relationship between the user and role, and also a many to many relationship 
+between roles and permission using a junction table
+
 
 ```
 
@@ -48,6 +50,13 @@ Bearer token is Required for this route, get a token from login route
 ```
 
 ```
+localhost:4000/api/users/profile
+
+Bearer token is Required for this route, get a token from login route
+
+```
+
+```
 localhost:4000/api/users/assign-roles
 {
   "userid": 1,
@@ -86,6 +95,9 @@ localhost:4000/api/role - GET
 {
   "id": 1
 }
+
+` Note: to view roles you have to be assigned to a role and the role must have the permission of view-roles`
+
 ```
 
 ```
